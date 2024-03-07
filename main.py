@@ -36,9 +36,9 @@ remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, f
 remove_button.grid(row=0, column=0)
 clear_button = Button(button_frame, text="Smazat seznam", borderwidth=2, font=main_font, bg=button_color)
 clear_button.grid(row=0, column=1)
-save_button = Button(button_frame, text="Uložit", borderwidth=2, font=main_font, bg=button_color)
+save_button = Button(button_frame, text="Uložit seznam", borderwidth=2, font=main_font, bg=button_color)
 save_button.grid(row=0, column=2)
-quit_button = Button(button_frame, text="Zavřít", borderwidth=2, font=main_font, bg=button_color)
+quit_button = Button(button_frame, text="Zavřít", borderwidth=2, font=main_font, bg=button_color, command=root.destroy)
 quit_button.grid(row=0, column=3)
 
 # Main cycle
