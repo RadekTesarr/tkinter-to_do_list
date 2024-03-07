@@ -27,5 +27,9 @@ user_input.grid(row=0, column=0)
 add_button = Button(input_frame, text="Přidat", borderwidth=2, font=main_font, bg=button_color)
 add_button.grid(row=0, column=1)
 
+#Text frame
+list_box = Listbox(text_frame, height=15, width=45, borderwidth=3, font=main_font)
+list_box.grid(row=0, column=0)
+
 # Main cycle
 root.mainloop()
