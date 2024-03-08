@@ -34,6 +34,14 @@ def save_list():
         for i in my_tasks:
             task_file.write(f"{i}\n")
 
+def open_tasks():
+    try:
+        with open("tasks.txt", "r") as file:
+            for one_line in file:
+                list_box.insert(END, one_line)
+    except:
+        print("Chyba")
+
 # Frames
 input_frame = Frame(root, bg=main_color)
 input_frame.pack()
@@ -69,6 +77,8 @@ save_button.grid(row=0, column=2, padx=2, pady=10, ipadx=8)
 quit_button = Button(button_frame, text="Zavřít", borderwidth=2, font=main_font, bg=button_color, command=root.destroy)
 quit_button.grid(row=0, column=3, padx=2, pady=10, ipadx=8)
 
+# Load tasks to listbox
+open_tasks()
 
 # Main cycle
 root.mainloop()
