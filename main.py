@@ -27,6 +27,13 @@ def clear_listbox():
     # remove all items from listbox
     list_box.delete(0, END)
 
+def save_list():
+    # save tasks into txt file
+    with open("tasks.txt", "w") as task_file:
+        my_tasks = list_box.get(0, END)
+        for i in my_tasks:
+            task_file.write(f"{i}\n")
+
 # Frames
 input_frame = Frame(root, bg=main_color)
 input_frame.pack()
@@ -57,7 +64,7 @@ remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, f
 remove_button.grid(row=0, column=0, padx=2, pady=10)
 clear_button = Button(button_frame, text="Smazat seznam", borderwidth=2, font=main_font, bg=button_color, command=clear_listbox)
 clear_button.grid(row=0, column=1,padx=2, pady=10)
-save_button = Button(button_frame, text="Uložit seznam", borderwidth=2, font=main_font, bg=button_color)
+save_button = Button(button_frame, text="Uložit seznam", borderwidth=2, font=main_font, bg=button_color, command=save_list)
 save_button.grid(row=0, column=2, padx=2, pady=10, ipadx=8)
 quit_button = Button(button_frame, text="Zavřít", borderwidth=2, font=main_font, bg=button_color, command=root.destroy)
 quit_button.grid(row=0, column=3, padx=2, pady=10, ipadx=8)
