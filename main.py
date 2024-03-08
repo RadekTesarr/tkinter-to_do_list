@@ -1,31 +1,35 @@
 from tkinter import *
+import customtkinter
 
 # Main window
-root = Tk()
+root = customtkinter.CTk()
 root.title("Seznam úkolů")
-root.minsize(600,400)
+root.geometry("600x430")
 root.iconbitmap("icon.ico")
 root.resizable(False, False)
 
 # Font and color definition
-main_font = ("Times New Roman", 12)
+main_font = ("Arial", 12)
 main_color = "#dd7f00"
 button_color = "#ffbe66"
-root.config(bg=main_color)
 
-# Funkction
+
+# Function
 def add_task():
-    # add one item into lisbox
+    # add one item into listbox
     list_box.insert(END, user_input.get())
     user_input.delete(0, END)
+
 
 def remove_task_item():
     # remove one item in listbox
     list_box.delete(ANCHOR)
 
+
 def clear_listbox():
     # remove all items from listbox
     list_box.delete(0, END)
+
 
 def save_list():
     # save tasks into txt file
@@ -37,6 +41,7 @@ def save_list():
             else:
                 task_file.write(f"{i}\n")
 
+
 def open_tasks():
     try:
         with open("tasks.txt", "r") as file:
@@ -45,40 +50,40 @@ def open_tasks():
     except:
         print("Chyba")
 
+
 # Frames
-input_frame = Frame(root, bg=main_color)
-input_frame.pack()
-text_frame = Frame(root, bg=main_color)
-text_frame.pack()
-button_frame = Frame(root, bg=main_color)
+input_frame = customtkinter.CTkFrame(root)
+input_frame.pack(pady=5)
+text_frame = customtkinter.CTkFrame(root)
+text_frame.pack(pady=5)
+button_frame = customtkinter.CTkFrame(root)
 button_frame.pack()
 
 # Input frame
-user_input = Entry(input_frame, width=35, borderwidth=3, font=main_font)
+user_input = customtkinter.CTkEntry(input_frame, width=400)
 user_input.grid(row=0, column=0, padx=5, pady=5)
-add_button = Button(input_frame, text="Přidat", borderwidth=2, font=main_font, bg=button_color, command=add_task)
+add_button = customtkinter.CTkButton(input_frame, text="Přidat", command=add_task)
 add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=10)
 
 # Scrollbar
 text_scrollbar = Scrollbar(text_frame)
-text_scrollbar.grid(row=0, column=1, sticky=N+S)
+text_scrollbar.grid(row=0, column=1, sticky=N + S)
 
-#Text frame
-list_box = Listbox(text_frame, height=15, width=45, borderwidth=3, font=main_font, yscrollcommand=text_scrollbar.set)
+# Text frame
+list_box = Listbox(text_frame, height=15, width=60, borderwidth=3, font=main_font, yscrollcommand=text_scrollbar.set)
 list_box.grid(row=0, column=0)
 
-# Scrollbar and listbox connect
 text_scrollbar.config(command=list_box.yview)
 
 # Button frame
-remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, font=main_font, bg=button_color, command=remove_task_item)
-remove_button.grid(row=0, column=0, padx=2, pady=10)
-clear_button = Button(button_frame, text="Smazat seznam", borderwidth=2, font=main_font, bg=button_color, command=clear_listbox)
-clear_button.grid(row=0, column=1,padx=2, pady=10)
-save_button = Button(button_frame, text="Uložit seznam", borderwidth=2, font=main_font, bg=button_color, command=save_list)
-save_button.grid(row=0, column=2, padx=2, pady=10, ipadx=8)
-quit_button = Button(button_frame, text="Zavřít", borderwidth=2, font=main_font, bg=button_color, command=root.destroy)
-quit_button.grid(row=0, column=3, padx=2, pady=10, ipadx=8)
+remove_button = customtkinter.CTkButton(button_frame, text="Odstranit položku", command=remove_task_item)
+remove_button.grid(row=0, column=0, padx=2, pady=5)
+clear_button = customtkinter.CTkButton(button_frame, text="Smazat seznam", command=clear_listbox)
+clear_button.grid(row=0, column=1, padx=2, pady=5)
+save_button = customtkinter.CTkButton(button_frame, text="Uložit seznam", command=save_list)
+save_button.grid(row=0, column=2, padx=2, pady=5)
+quit_button = customtkinter.CTkButton(button_frame, text="Zavřít", command=root.destroy)
+quit_button.grid(row=0, column=3, padx=2, pady=5)
 
 # Load tasks to listbox
 open_tasks()
