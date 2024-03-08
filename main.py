@@ -13,6 +13,11 @@ main_color = "#dd7f00"
 button_color = "#ffbe66"
 root.config(bg=main_color)
 
+# Funkction
+def add_task():
+    list_box.insert(END, user_input.get())
+    user_input.delete(0, END)
+
 # Frames
 input_frame = Frame(root, bg=main_color)
 input_frame.pack()
@@ -24,7 +29,7 @@ button_frame.pack()
 # Input frame
 user_input = Entry(input_frame, width=35, borderwidth=3, font=main_font)
 user_input.grid(row=0, column=0, padx=5, pady=5)
-add_button = Button(input_frame, text="Přidat", borderwidth=2, font=main_font, bg=button_color)
+add_button = Button(input_frame, text="Přidat", borderwidth=2, font=main_font, bg=button_color, command=add_task)
 add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=10)
 
 # Scrollbar
