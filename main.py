@@ -23,6 +23,10 @@ def remove_task_item():
     # remove one item in listbox
     list_box.delete(ANCHOR)
 
+def clear_listbox():
+    # remove all items from listbox
+    list_box.delete(0, END)
+
 # Frames
 input_frame = Frame(root, bg=main_color)
 input_frame.pack()
@@ -51,7 +55,7 @@ text_scrollbar.config(command=list_box.yview)
 # Button frame
 remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, font=main_font, bg=button_color, command=remove_task_item)
 remove_button.grid(row=0, column=0, padx=2, pady=10)
-clear_button = Button(button_frame, text="Smazat seznam", borderwidth=2, font=main_font, bg=button_color)
+clear_button = Button(button_frame, text="Smazat seznam", borderwidth=2, font=main_font, bg=button_color, command=clear_listbox)
 clear_button.grid(row=0, column=1,padx=2, pady=10)
 save_button = Button(button_frame, text="Uložit seznam", borderwidth=2, font=main_font, bg=button_color)
 save_button.grid(row=0, column=2, padx=2, pady=10, ipadx=8)
