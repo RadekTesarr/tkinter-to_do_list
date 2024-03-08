@@ -37,8 +37,11 @@ text_scrollbar = Scrollbar(text_frame)
 text_scrollbar.grid(row=0, column=1, sticky=N+S)
 
 #Text frame
-list_box = Listbox(text_frame, height=15, width=45, borderwidth=3, font=main_font)
+list_box = Listbox(text_frame, height=15, width=45, borderwidth=3, font=main_font, yscrollcommand=text_scrollbar.set)
 list_box.grid(row=0, column=0)
+
+# Scrollbar and listbox connect
+text_scrollbar.config(command=list_box.yview)
 
 # Button frame
 remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, font=main_font, bg=button_color)
