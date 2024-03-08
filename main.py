@@ -15,8 +15,13 @@ root.config(bg=main_color)
 
 # Funkction
 def add_task():
+    # add one item into lisbox
     list_box.insert(END, user_input.get())
     user_input.delete(0, END)
+
+def remove_task_item():
+    # remove one item in listbox
+    list_box.delete(ANCHOR)
 
 # Frames
 input_frame = Frame(root, bg=main_color)
@@ -44,7 +49,7 @@ list_box.grid(row=0, column=0)
 text_scrollbar.config(command=list_box.yview)
 
 # Button frame
-remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, font=main_font, bg=button_color)
+remove_button = Button(button_frame, text="Odstranit položku", borderwidth=2, font=main_font, bg=button_color, command=remove_task_item)
 remove_button.grid(row=0, column=0, padx=2, pady=10)
 clear_button = Button(button_frame, text="Smazat seznam", borderwidth=2, font=main_font, bg=button_color)
 clear_button.grid(row=0, column=1,padx=2, pady=10)
