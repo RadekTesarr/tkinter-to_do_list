@@ -27,6 +27,10 @@ user_input.grid(row=0, column=0, padx=5, pady=5)
 add_button = Button(input_frame, text="Přidat", borderwidth=2, font=main_font, bg=button_color)
 add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=10)
 
+# Scrollbar
+text_scrollbar = Scrollbar(text_frame)
+text_scrollbar.grid(row=0, column=1, sticky=N+S)
+
 #Text frame
 list_box = Listbox(text_frame, height=15, width=45, borderwidth=3, font=main_font)
 list_box.grid(row=0, column=0)
@@ -40,6 +44,7 @@ save_button = Button(button_frame, text="Uložit seznam", borderwidth=2, font=ma
 save_button.grid(row=0, column=2, padx=2, pady=10, ipadx=8)
 quit_button = Button(button_frame, text="Zavřít", borderwidth=2, font=main_font, bg=button_color, command=root.destroy)
 quit_button.grid(row=0, column=3, padx=2, pady=10, ipadx=8)
+
 
 # Main cycle
 root.mainloop()
